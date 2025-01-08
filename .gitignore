@@ -9,3 +9,5 @@ venv
 /site
 .vscode
 version-*
+node_modules/
+package-lock.json
