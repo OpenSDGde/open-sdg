@@ -14,6 +14,8 @@ $herne-hf-tab-colors: {{ colors }};
 @import "handlungsfelder";
 
 @import "font-face";
+@import "tpwd-variables";
 @import "variables";
 @import "open-sdg";
+@import "tpwd-custom";
 @import "custom";
