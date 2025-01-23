@@ -1,6 +1,18 @@
 ---
 ---
 
+{% assign colors = "" %}
+{% for field in site.data.handlungsfelder.frontpage_handlungsfelder %}
+  {% if forloop.first %}
+    {% assign colors = field.hf-color %}
+  {% else %}
+    {% assign colors = colors | append: ", " | append: field.hf-color %}
+  {% endif %}
+{% endfor %}
+
+$herne-hf-tab-colors: {{ colors }};
+@import "handlungsfelder";
+
 @import "font-face";
 @import "variables";
 @import "open-sdg";
