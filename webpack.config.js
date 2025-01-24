@@ -3,6 +3,7 @@ const path = require('path');
 module.exports = {
   mode: 'production',
   entry: {
+    header: './assets/js/header.js',
     main: './assets/js/main.js',
     leaflet: './assets/js/leaflet.js',
     chartjs: './assets/js/chartjs-plugin-annotation.js',
