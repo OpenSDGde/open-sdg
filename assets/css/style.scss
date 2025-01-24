@@ -10,7 +10,7 @@
   {% endif %}
 {% endfor %}
 
-$herne-hf-tab-colors: {{ colors }};
+$hf-tab-colors: {{ colors }};
 @import "handlungsfelder";
 
 @import "font-face";
