@@ -1,79 +1,76 @@
 <!-- Handlungsfelder - tiles -->
 <div class="container pb-12 pt-8">
   <div class="grid grid-cols-12 gap-y-4 pt-1 md:gap-8">
-
     {% for hf in site.data.handlungsfelder.frontpage_handlungsfelder %}
-      <!-- Tile for the Handlungsfeld -->
-      <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3">
-        <button
-          class="flex min-w-full flex-col items-center justify-center rounded bg-white px-4 shadow transition min-h-48"
-          id="tabbtn-{{ forloop.index }}"
-          style="cursor:pointer;"
-          onclick="document.getElementById('modal-{{ forloop.index }}').classList.remove('hidden')"
-        >
-          <i class="fa {{ hf.icon }} text-2xl" aria-hidden="true"></i>
-          <span class="text-lg">{{ hf.title | t }}</span>
-        </button>
-      </div>
-
-      <!-- Modal for the Handlungsfeld (hidden by default) -->
-      <div
-        id="modal-{{ forloop.index }}"
-        class="fixed inset-0 z-50 hidden h-screen w-screen items-center justify-center bg-black/50 p-4 backdrop-blur-sm"
-        onclick="document.getElementById('modal-{{ forloop.index }}').classList.add('hidden')"
-        role="dialog"
-        aria-modal="true"
+    <!-- Tile for the Handlungsfeld -->
+    <div class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3">
+      <button
+        class="flex min-h-48 min-w-full flex-col items-center justify-center rounded bg-white px-4 shadow transition"
+        id="tabbtn-{{ forloop.index }}"
+        style="cursor: pointer"
+        onclick="document.getElementById('modal-{{ forloop.index }}').classList.remove('hidden')"
       >
-        <div
-          class="relative mx-auto max-h-[calc(100vh-4rem)] w-full max-w-xl overflow-y-auto rounded p-6 shadow-lg lg:max-w-2xl xl:max-w-4xl"
-          style="background-color: {{ hf.hf-color }};"
-          onclick="event.stopPropagation()" 
-          <!-- stops click inside modal from closing it -->
+        <i class="fa {{ hf.icon }} text-2xl" aria-hidden="true"></i>
+        <span class="text-lg">{{ hf.title | t }}</span>
+      </button>
+    </div>
+
+    <!-- Modal for the Handlungsfeld (hidden by default) -->
+    <div
+      id="modal-{{ forloop.index }}"
+      class="fixed inset-0 z-50 hidden h-screen w-screen items-center justify-center bg-black/50 p-4 backdrop-blur-sm"
+      onclick="document.getElementById('modal-{{ forloop.index }}').classList.add('hidden')"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div
+        class="relative mx-auto max-h-[calc(100vh-4rem)] w-full max-w-xl overflow-y-auto rounded p-6 shadow-lg lg:max-w-2xl xl:max-w-4xl"
+        style="background-color: {{ hf.hf-color }};"
+        onclick="event.stopPropagation()"
+      >
+        <!-- stops click inside modal from closing it -->
+        <!-- Close Button -->
+        <button
+          class="no-focus absolute right-2 top-2 transform cursor-pointer border-none bg-transparent p-1 text-white transition-transform duration-300 hover:rotate-45"
+          type="button"
+          onclick="document.getElementById('modal-{{ forloop.index }}').classList.add('hidden')"
+          aria-label="Schließen"
         >
-          <!-- Close Button -->
-          <button
-            class="absolute right-2 top-2 transform cursor-pointer border-none bg-transparent p-1 text-white hover:rotate-45"
-            type="button"
-            onclick="document.getElementById('modal-{{ forloop.index }}').classList.add('hidden')"
-            aria-label="Schließen"
-          >
-            <i class="fas fa-times"></i>
-          </button>
+          <svg class="fas fa-times"></svg>
+        </button>
+        <!-- Modal Content -->
+        <!-- ... rest of the code ... -->
 
-          <!-- Modal Content -->
-          <h2 class="mb-4 text-3xl font-bold text-white">{{ hf.title }}</h2>
-          <div class="prose text-white">
-            {{ hf.leitsatz }}
+        <!-- Modal Content -->
+        <h2 class="mb-4 text-3xl font-bold text-white">{{ hf.title }}</h2>
+        <div class="prose text-white">
+          {{ hf.leitsatz }}
 
-            <!-- If HF goals exist, show them -->
-            {% if hf.hf-goals %}
-              <div class="row justify-content-start mt-4">
-                <div class="col hf-goal-tiles mb-4">
-                  <div class="hf-subtitle" style="font-size:1.5rem; margin-bottom:1rem;">
-                    SDGs zu dem Handlungsfeld
-                  </div>
-                  <div class="flex-grid">
-                    {% assign goalsArray = hf.hf-goals | split: ',' %}
-                    {% for goal in goalsArray %}
-                      <div>
-                        <a href="{{ site.baseurl }}/{{ goal | strip }}">
-                          <img 
-                            src="{{ site.baseurl }}/assets/img/goals/de/{{ goal | strip }}.png"
-                            class="block img-responsive img-hf-goal"
-                            alt="Handlungsfelder - Goal {{ goal | strip }}"
-                          />
-                        </a>
-                      </div>
-                    {% endfor %}
-                  </div>
+          <!-- If HF goals exist, show them -->
+          {% if hf.hf-goals %}
+          <div class="row justify-content-start mt-4">
+            <div class="col hf-goal-tiles mb-4">
+              <div class="hf-subtitle" style="font-size: 1.5rem; margin-bottom: 1rem">SDGs zu dem Handlungsfeld</div>
+              <div class="flex-grid">
+                {% assign goalsArray = hf.hf-goals | split: ',' %} {% for goal in goalsArray %}
+                <div>
+                  <a href="{{ site.baseurl }}/{{ goal | strip }}">
+                    <img
+                      src="{{ site.baseurl }}/assets/img/goals/de/{{ goal | strip }}.png"
+                      class="img-responsive img-hf-goal block"
+                      alt="Handlungsfelder - Goal {{ goal | strip }}"
+                    />
+                  </a>
                 </div>
+                {% endfor %}
               </div>
-            {% endif %}
+            </div>
           </div>
+          {% endif %}
         </div>
       </div>
-      <!-- end .modal -->
+    </div>
+    <!-- end .modal -->
     {% endfor %}
-
   </div>
 </div>

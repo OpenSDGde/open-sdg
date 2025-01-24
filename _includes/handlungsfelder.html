@@ -1,18 +1,18 @@
 {% assign display = site.data.handlungsfelder.display_as %} {% if display == "tile" or display == "tab" %}
-  <div style="background-color: #efeeeb">
-    <div class="container" style="margin-top: 3rem; padding-top: 3rem; padding-bottom: 1rem">
-      <!-- <hr style="border: 1px solid black; margin-top: 5rem;"> -->
-      <h2 class="frontpage-goals-grid-title" style="font-size: 32px; font-weight: 700">
-        {{ site.data.handlungsfelder.frontpage_handlungsfelder_title.hf-title | t }}
-      </h2>
-      <div class="frontpage-goals-grid-description" style="font-size: 22px">
-        {{ site.data.handlungsfelder.frontpage_handlungsfelder_title.hf-subtitle | t }}
-      </div>
+<div style="background-color: #efeeeb">
+  <div class="container" style="margin-top: 3rem; padding-top: 3rem; padding-bottom: 1rem">
+    <!-- <hr style="border: 1px solid black; margin-top: 5rem;"> -->
+    <h2 class="frontpage-goals-grid-title" style="font-size: 32px; font-weight: 700">
+      {{ site.data.handlungsfelder.frontpage_handlungsfelder_title.hf-title | t }}
+    </h2>
+    <div class="frontpage-goals-grid-description" style="font-size: 22px">
+      {{ site.data.handlungsfelder.frontpage_handlungsfelder_title.hf-subtitle | t }}
     </div>
   </div>
   {% if display == "tab" %} 
-    {% include components/handlungsfelder-tabs.html %} 
-    {% else %} 
-    {% include components/handlungsfelder-tiles.html %} 
-  {% endif %} 
+    {% include components/handlungsfelder-tabs.html %}
+  {% else %} 
+    {% include components/handlungsfelder-tile.html %}
+  {% endif %}
+</div>
 {% endif %}
