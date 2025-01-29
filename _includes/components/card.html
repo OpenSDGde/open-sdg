@@ -1,40 +1,35 @@
-<div class="col-sm-6 col-md-4">
-    <div class="card">
-    <div class="card-body">
+<!-- cards for publication etc-->
+<h2 style="font-size: 32px; font-weight: 700; color: #444444; padding-top: 5rem;">Veröffentlichungen</h2>
+<h4 style="font-size: 22px; color: #444444; margin-bottom: 20px;">Bleibe auf dem Laufenden...</h4>
+<br>
 
-    {% if include.card.title and include.card.title != '' %}
-    <h2 class="card-title"
-        {% if include.card.rule_color %}
-        style="border-color: {{ include.card.rule_color }};"
-        {% endif %}
-    >{{ include.card.title | t }}</h2>
-    {% endif %}
-  
-    {% if include.card.content and include.card.content != '' %}
-    <div class="card-text">{{ include.card.content | t | markdownify }}</div>
-    {% endif %}
-  
-    {% if include.card.include and include.card.include != '' %}
-      {% include {{ include.card.include }} %}
-    {% endif %}
-  
-    {% if include.card.button_label and include.card.button_label != '' %}
-    {% assign button_href = include.card.button_link %}
-    {% assign href_start = button_href | slice: 0, 4 %}
-    {% if href_start != 'http' %}
-      {%- assign href_first = button_href | slice: 0 %}
-      {%- if href_first == '/' -%}
-        {%- assign button_href = button_href | slice: 1, button_href.size -%}
-      {%- endif -%}
-      {% assign button_href = page.baseurl | append: button_href %}
-    {% endif %}
-    <a class="btn btn-primary btn-download" href="{{ button_href }}">
-      {{ include.card.button_label }}
-    </a>
-    {% endif %}
 
+<div id="carouselCard" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2500">
+    
+    <div class="carousel-inner" style="margin-right: -10px;">
+        {% for card in site.frontpage_cards %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %} card-gap" style="overflow:visible">
+            <div class="col">
+                <div class="card border">
+                    <a href="{{ card.href }}" target="_blank" style="text-decoration: none;">
+                        <img class="card-img-top" src='{{ site.baseurl }}/assets/img{{ card.thumbnail_src }}' alt="include.card.title">
+                        <div class="cont">
+                            <h4 style="font-weight: 600; font-size: calc(1rem + 1vw*0.075); line-height: 1.5;">{{ card.title }}</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
     </div>
-  
-  </div>
-  
-  </div>
+
+    <a class="carousel-card-prev float-start" role="button" data-bs-target="#carouselCard" data-bs-slide="prev" style="color:white">
+        <span class="fa fa-chevron-left" id="nav-arrow" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </a>
+    <a class="carousel-card-next float-end" role="button" data-bs-target="#carouselCard" data-bs-slide="next" style="color:white">
+        <span class="fa fa-chevron-right" id="nav-arrow" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </a>
+
+</div>
