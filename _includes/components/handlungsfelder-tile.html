@@ -1,6 +1,6 @@
 <!-- Handlungsfelder - tiles -->
 <div class="container" style="margin-bottom: 3rem">
-  <div class="tab tw:grid tw:grid-cols-12 tw:gap-y-4 tw:pt-1 tw:md:gap-8">
+  <div class="tab tw:grid tw:grid-cols-12 tw:gap-y-4 tw:pt-1 tw:md:gap-x-8">
     {% for hf in site.data.handlungsfelder.frontpage_handlungsfelder %}
     <!-- Tile for the Handlungsfeld -->
     <div class="tw:col-span-12 tw:md:col-span-6 tw:lg:col-span-4 tw:xl:col-span-3" style="margin-top: 1rem">
@@ -30,10 +30,11 @@
         <!-- stops click inside modal from closing it -->
         <!-- Close Button -->
         <button
-          class="no-focus tw:absolute tw:right-2 tw:top-2 tw:transform tw:cursor-pointer tw:border-none tw:bg-transparent tw:p-1 tw:text-white"
+          class="no-focus tw:absolute tw:right-2 tw:top-2 tw:transform tw:cursor-pointer tw:border-none tw:bg-transparent tw:text-white"
           type="button"
           onclick="document.getElementById('modal-{{ forloop.index }}').classList.add('tw:hidden')"
           aria-label="Schließen"
+          style="padding-right: 4px;"
         >
           <i class="fas fa-times tw:duration-300 tw:hover:rotate-45 tw:text-white"></i>
         </button>
