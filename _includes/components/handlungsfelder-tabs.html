@@ -1,13 +1,15 @@
-<div class="tab container overflow-x-auto" style="margin-top: 1rem">
-  <div class="flex flex-nowrap content-start">
+<div class="tab tw:overflow-x-auto tw:mt-1 container">
+  <div class="tw:flex tw:flex-nowrap tw:content-start tw:align-baseline tw:px-2">
     {% for hf in site.data.handlungsfelder.frontpage_handlungsfelder %}
     <button
       class="tablinks {% if forloop.first %}active{% endif %}"
       id="tabbtn-{{ forloop.index }}"
       onclick="openTab(event, 'frontpage-handlungsfelder-{{ hf.title | slugify }}')"
     >
-      <i class="fa {{ hf.icon }} text-xl xl:text-2xl"></i>
-      <span class="hidden lg:text-sm xl:text-lg px-4 lg:block">{{ hf.title }}</span>
+      <div class="tw:flex tw:flex-col tw:items-center" style="padding-left: 1rem; padding-right: 1rem;">
+        <i class="fa {{ hf.icon }} tw:text-xl xl:tw:text-2xl tw:mt-1" style="margin-top: 12px; margin-bottom: 8px;"></i>
+        <span class="tw:lg:text-sm tw:xl:text-lg lg:tw:block hidden">{{ hf.title }}</span>
+      </div>
     </button>
     {% endfor %}
   </div>
