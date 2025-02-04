@@ -7,7 +7,6 @@ module.exports = {
     main: './assets/js/main.js',
     leaflet: './assets/js/leaflet.js',
     chartjs: './assets/js/chartjs-plugin-annotation.js',
-    klaro: './assets/js/klaro.js',
   },
   output: {
     path: path.resolve(__dirname, 'assets', 'js'),

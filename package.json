@@ -47,6 +47,6 @@
     "webpack-cli": "^6.0.1"
   },
   "scripts": {
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config.js && cp node_modules/klaro/dist/klaro-no-css.js assets/js/klaro.bundle.js"
   }
 }
