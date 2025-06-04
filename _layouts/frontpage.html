@@ -28,11 +28,19 @@
   </div>
 
   {% include handlungsfelder.html %}
+  <!-- sdg-slides  --->
+  {% if site.sdg_slides %}
+    {% include components/sdg-slides.html %}
+  {% endif %}
 
   <!-- Publications  --->
   {% if site.frontpage_cards %}
   <div class="container">
+    {% if site.sdg_slides %}
+    {% include components/publication-tiles.html %}
+    {% else %}
     <div class="row g-0 frontpage-card">{% include components/card.html card=card %}</div>
+    {% endif %}
   </div>
   {% endif %}
 

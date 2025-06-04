@@ -1,0 +1,24 @@
+<!-- Publication Tiles Component -->
+<h2 style="font-size: 32px; font-weight: 700; color: #444444; padding-top: 5rem;">Veröffentlichungen</h2>
+<h4 style="font-size: 22px; color: #444444; margin-bottom: 20px;">Bleibe auf dem Laufenden...</h4>
+<br>
+
+<div class="container" style="margin-bottom: 3rem">
+  <div class="tw:grid tw:grid-cols-12 tw:gap-y-4 tw:pt-1 tw:md:gap-x-8">
+    {% for card in site.frontpage_cards %}
+    <!-- Tile for each publication -->
+    <div class="tw:col-span-12 tw:md:col-span-6 tw:lg:col-span-4 tw:xl:col-span-3" style="margin-top: 1rem">
+      <a href="{{ card.href }}" target="_blank" style="text-decoration: none;">
+        <div class="tw:flex tw:min-h-48 tw:min-w-full tw:flex-col tw:items-center tw:justify-start tw:rounded tw:bg-white tw:px-4 tw:shadow tw:transition tw:duration-300 tw:hover:shadow-lg">
+          <div class="tw:w-full tw:overflow-hidden tw:rounded-t">
+            <img class="tw:w-full tw:h-auto tw:object-cover" src='{{ site.baseurl }}/assets/img{{ card.thumbnail_src }}' alt="{{ card.title }}">
+          </div>
+          <div class="tw:p-4 tw:w-full">
+            <h4 style="font-weight: 600; font-size: calc(1rem + 1vw*0.075); line-height: 1.5; color: #444444;">{{ card.title }}</h4>
+          </div>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
