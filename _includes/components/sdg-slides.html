@@ -4,7 +4,7 @@
   <h4 style="font-size: 22px; color: #444444; margin-bottom: 20px;">Die 17 Ziele für nachhaltige Entwicklung</h4>
   <br>
 
-  <div id="sdgSlidesCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="1500" style="max-width: 100%;">
+  <div id="sdgSlidesCarousel" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
           {% for slide in site.sdg_slides %}
               <button type="button" data-bs-target="#sdgSlidesCarousel" data-bs-slide-to="{{ forloop.index0 }}" {% if forloop.first %}class="active no-focus" aria-current="true"{% else %}class="no-focus"{% endif %} aria-label="Slide {{ forloop.index }}"></button>
@@ -13,10 +13,8 @@
 
       <div class="carousel-inner">
           {% for slide in site.sdg_slides %}
-          <div class="carousel-item {% if forloop.first %}active{% endif %}" style="background-color: transparent;">
-              <div style="display: flex; justify-content: center; align-items: center; padding: 20px 0;">
-                  <img src="{{ site.baseurl }}/assets/img/sdg_slides/{{ slide.image }}" style="max-width: 100%; height: auto; object-fit: contain; border: none; margin: 0 auto;" alt="{{ slide.title }}">
-              </div>
+          <div class="carousel-item {% if forloop.first %}active{% endif %}">
+              <img src="{{ site.baseurl }}/assets/img/sdg_slides/{{ slide.image }}" alt="{{ slide.title }}">
           </div>
           {% endfor %}
       </div>
