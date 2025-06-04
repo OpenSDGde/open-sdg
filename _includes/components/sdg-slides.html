@@ -4,7 +4,7 @@
   <h4 style="font-size: 22px; color: #444444; margin-bottom: 20px;">Die 17 Ziele für nachhaltige Entwicklung</h4>
   <br>
 
-  <div id="sdgSlidesCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" style="max-width: 100%;">
+  <div id="sdgSlidesCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="1500" style="max-width: 100%;">
       <div class="carousel-indicators">
           {% for slide in site.sdg_slides %}
               <button type="button" data-bs-target="#sdgSlidesCarousel" data-bs-slide-to="{{ forloop.index0 }}" {% if forloop.first %}class="active no-focus" aria-current="true"{% else %}class="no-focus"{% endif %} aria-label="Slide {{ forloop.index }}"></button>
