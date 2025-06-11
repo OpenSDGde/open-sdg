@@ -7,10 +7,10 @@
     {% for slide in site.sdg_slides %}
     <div class="slide {% if forloop.first %}active{% endif %}">
       <img src="{{ site.baseurl }}/assets/img/sdg_slides/{{ slide.image }}" alt="{{ slide.title }}" />
-      <!-- Mobile Nav Icons -->
+      <!-- Mobile Nav Icons (unter dem Bild) -->
       <div class="mobile-nav">
-        <span class="nav-icon left" id="prevIcon"><i class="fa fa-chevron-left"></i></span>
-        <span class="nav-icon right" id="nextIcon"><i class="fa fa-chevron-right"></i></span>
+        <span class="nav-icon" id="prevIcon"><i class="fa fa-chevron-left"></i></span>
+        <span class="nav-icon" id="nextIcon"><i class="fa fa-chevron-right"></i></span>
       </div>
     </div>
     {% endfor %}
@@ -28,34 +28,30 @@
   .custom-carousel {
     position: relative;
     width: 100%;
-    height: 430px;
+    height: auto;
+    max-width: 960px;
     margin: 0 auto;
     overflow: hidden;
     background-color: #f9f9f9;
+    border-radius: 6px;
   }
 
   .slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     display: none;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    text-align: center;
   }
 
   .slide.active {
-    display: block;
-    opacity: 1;
-    z-index: 1;
+    display: flex;
   }
 
   .slide img {
     max-width: 100%;
-    max-height: 100%;
+    max-height: 420px;
     object-fit: contain;
-    display: block;
     margin: 0 auto;
   }
 
@@ -79,9 +75,21 @@
     background-color: #444;
   }
 
-  /* MOBILE ICON-NAV */
+  /* Mobile-only navigation below image */
   .mobile-nav {
     display: none;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 1rem;
+  }
+
+  .nav-icon {
+    font-size: 24px;
+    background-color: #333;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 50%;
+    cursor: pointer;
   }
 
   @media (max-width: 600px) {
@@ -91,20 +99,6 @@
 
     .mobile-nav {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 100%;
-      transform: translateY(-50%);
-      padding: 0 10px;
-    }
-
-    .nav-icon {
-      color: white;
-      cursor: pointer;
-      z-index: 2;
     }
   }
 </style>
@@ -142,7 +136,7 @@
       startTimer()
     }
 
-    // Dot-Navigation
+    // Dot navigation (Desktop)
     dots.forEach((dot) => {
       dot.addEventListener('click', () => {
         const index = parseInt(dot.getAttribute('data-index'))
@@ -151,7 +145,7 @@
       })
     })
 
-    // Icon-Navigation (Mobile only)
+    // Mobile icon navigation
     document.addEventListener('click', function (e) {
       if (e.target.closest('#prevIcon')) {
         prevSlide()
